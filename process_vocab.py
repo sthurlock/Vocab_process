@@ -4,13 +4,14 @@ from subprocess import call
 
 def get_list(part,line):
     newline = line.replace(", ", ",")
+    newline = newline.replace("; ", ",")
     m = re.match(part + " (.*)$", newline)
     count=0
     if m:
        thelist = m.group(1)
        print("** " + part)
-       for word in thelist.split(","):
-          print(word + ":")
+       for word in thelist.replace(';',',').split(","):
+          print(word.title() + ":")
           count = count + 1
     return count
 
@@ -28,9 +29,13 @@ for line in file:
        print(word_num, word, word_type)
        continue
 
+    usage_note = re.match("Usage Note:", line) 
+    if usage_note:
+       print(line, end='')
+       continue
+
     def_match = re.match("Definition[0-9]*: (.*)$", line) 
     if def_match:
-       definition = def_match.groups()[0]
        print(line, end='')
        continue
 
