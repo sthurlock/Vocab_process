@@ -9,7 +9,7 @@ def get_list(part,line):
     count=0
     if m:
        thelist = m.group(1)
-       print("** " + part)
+       print("\n" + part)
        for word in thelist.replace(';',',').split(","):
           print(word.title() + ":")
           count = count + 1
