@@ -3,4 +3,5 @@ python script to format vocab text
 
 
 updates to read me
-edit2
+more edits
+edits2
